@@ -5,12 +5,13 @@ set(UPDATESCR update)   #update script
 set(FINDDEVSCR find-devtype)  #device detction scrtipt
 set(STARTUP_SCR_MOUNT S02MountSettings)  #settings partition mount script
 set(STARTUP_SCR_DEVFIND S01FindDevType)  #device detection startup script
+set(STARTUP_SCR_DROPBEAR S50dropbear)  #ssh service customized-startup script
 set(FSTAB_FILE fstab)  #fstab
 
 file(GLOB UPDATE_SCRIPTS ${BRDISKSCR} ${UPDATESCR} ${FINDDEVSCR})
 install(PROGRAMS ${UPDATE_SCRIPTS} DESTINATION usr/sbin)
 
-file(GLOB STARTUP_SCRIPTS ${STARTUP_SCR_MOUNT} ${STARTUP_SCR_DEVFIND})
+file(GLOB STARTUP_SCRIPTS ${STARTUP_SCR_MOUNT} ${STARTUP_SCR_DEVFIND} ${STARTUP_SCR_DROPBEAR})
 install(PROGRAMS ${STARTUP_SCRIPTS} DESTINATION etc/init.d)
 
 file(GLOB OTHER_SCRIPTS ${FSTAB_FILE})
